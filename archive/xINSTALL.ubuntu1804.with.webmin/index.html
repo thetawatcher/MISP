@@ -1262,11 +1262,14 @@ sudo update-grub  &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&am
 </code></pre></div>
 <div class="admonition notice">
 <p class="admonition-title">Notice</p>
-<p>On recent Ubuntu install Netplan is default and you need to change the Network name.
+<p>On recent Ubuntu install Netplan is default and you might need to change the Network name in its respective config file.
 <div class="highlight"><pre><span></span><code>sudo sed -i &quot;s/enp0s3/eth0/&quot; /etc/netplan/50-cloud-init.yaml
 </code></pre></div>
 OR on Ubuntu 19.04 (yay for changing this every 5 commits... #n00bs)
 <div class="highlight"><pre><span></span><code>sudo sed -i &quot;s/enp0s3/eth0/&quot; /etc/netplan/01-netcfg.yaml
+</code></pre></div>
+OR on Ubuntu 22.04
+<div class="highlight"><pre><span></span><code>sudo sed -i &quot;s/enp0s3/eth0/&quot; /etc/netplan/00-installer-config.yaml
 </code></pre></div></p>
 </div>
 <h4 id="make-sure-your-system-is-up2date">Make sure your system is up2date<a class="headerlink" href="#make-sure-your-system-is-up2date" title="Permanent link">&para;</a></h4>

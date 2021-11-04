@@ -1394,11 +1394,14 @@ sudo update-grub  &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&am
 </code></pre></div>
 <div class="admonition notice">
 <p class="admonition-title">Notice</p>
-<p>On recent Ubuntu install Netplan is default and you need to change the Network name.
+<p>On recent Ubuntu install Netplan is default and you might need to change the Network name in its respective config file.
 <div class="highlight"><pre><span></span><code>sudo sed -i &quot;s/enp0s3/eth0/&quot; /etc/netplan/50-cloud-init.yaml
 </code></pre></div>
 OR on Ubuntu 19.04 (yay for changing this every 5 commits... #n00bs)
 <div class="highlight"><pre><span></span><code>sudo sed -i &quot;s/enp0s3/eth0/&quot; /etc/netplan/01-netcfg.yaml
+</code></pre></div>
+OR on Ubuntu 22.04
+<div class="highlight"><pre><span></span><code>sudo sed -i &quot;s/enp0s3/eth0/&quot; /etc/netplan/00-installer-config.yaml
 </code></pre></div></p>
 </div>
 <h4 id="install-postfix-there-will-be-some-questions">install postfix, there will be some questions.<a class="headerlink" href="#install-postfix-there-will-be-some-questions" title="Permanent link">&para;</a></h4>
@@ -1559,6 +1562,7 @@ installCoreDeps <span class="o">()</span> <span class="o">{</span>
 <span class="c1"># Install Php 8.0 dependencies</span>
 <span class="c1"># FIXME: Ugly hack to get 7.4 working until 8.0 (cake4) will be implemented.</span>
 <span class="nb">echo</span> <span class="s2">&quot;deb http://ppa.launchpad.net/ondrej/php/ubuntu devel main&quot;</span> <span class="p">|</span>sudo tee /etc/apt/sources.list.d/ondrej-ubuntu-php-devel.list
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
 sudo apt update
 installDepsPhp80 <span class="o">()</span> <span class="o">{</span>
   debug <span class="s2">&quot;Installing PHP 8.0 dependencies&quot;</span>
@@ -1570,7 +1574,7 @@ installDepsPhp80 <span class="o">()</span> <span class="o">{</span>
   php7.4 php7.4-cli <span class="se">\</span>
   php7.4-dev <span class="se">\</span>
   php-json php7.4-xml php7.4-mysql php7.4-opcache php7.4-readline php7.4-mbstring php7.4-zip <span class="se">\</span>
-  php7.4-redis php-gnupg <span class="se">\</span>
+  php-redis php-gnupg <span class="se">\</span>
   php7.4-intl php7.4-bcmath <span class="se">\</span>
   php7.4-gd
 
