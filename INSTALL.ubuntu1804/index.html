@@ -1604,6 +1604,8 @@ installCore <span class="o">()</span> <span class="o">{</span>
 
     <span class="c1"># install python-stix dependencies</span>
     <span class="si">${</span><span class="nv">SUDO_WWW</span><span class="si">}</span> <span class="si">${</span><span class="nv">PATH_TO_MISP</span><span class="si">}</span>/venv/bin/pip install ordered-set python-dateutil six weakrefmethod
+    debug <span class="s2">&quot;Install misp-stix&quot;</span>
+    <span class="si">${</span><span class="nv">SUDO_WWW</span><span class="si">}</span> <span class="si">${</span><span class="nv">PATH_TO_MISP</span><span class="si">}</span>/venv/bin/pip install <span class="si">${</span><span class="nv">PATH_TO_MISP</span><span class="si">}</span>/app/files/scripts/misp-stix
 
     debug <span class="s2">&quot;Install PyMISP&quot;</span>
     <span class="si">${</span><span class="nv">SUDO_WWW</span><span class="si">}</span> <span class="si">${</span><span class="nv">PATH_TO_MISP</span><span class="si">}</span>/venv/bin/pip install <span class="si">${</span><span class="nv">PATH_TO_MISP</span><span class="si">}</span>/PyMISP

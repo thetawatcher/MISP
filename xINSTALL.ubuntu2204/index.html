@@ -434,8 +434,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#0-misp-ubuntu-2004-server-install-status" class="md-nav__link">
-    0/ MISP Ubuntu 20.04-server install - status
+  <a href="#0-misp-ubuntu-2204-server-install-status" class="md-nav__link">
+    0/ MISP Ubuntu 22.04-server install - status
   </a>
   
 </li>
@@ -449,8 +449,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-a-minimal-ubuntu-2004-server-system-with-the-software" class="md-nav__link">
-    Install a minimal Ubuntu 20.04-server system with the software:
+  <a href="#install-a-minimal-ubuntu-2204-server-system-with-the-software" class="md-nav__link">
+    Install a minimal Ubuntu 22.04-server system with the software:
   </a>
   
 </li>
@@ -977,8 +977,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#0-misp-ubuntu-2004-server-install-status" class="md-nav__link">
-    0/ MISP Ubuntu 20.04-server install - status
+  <a href="#0-misp-ubuntu-2204-server-install-status" class="md-nav__link">
+    0/ MISP Ubuntu 22.04-server install - status
   </a>
   
 </li>
@@ -992,8 +992,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-a-minimal-ubuntu-2004-server-system-with-the-software" class="md-nav__link">
-    Install a minimal Ubuntu 20.04-server system with the software:
+  <a href="#install-a-minimal-ubuntu-2204-server-system-with-the-software" class="md-nav__link">
+    Install a minimal Ubuntu 22.04-server system with the software:
   </a>
   
 </li>
@@ -1274,7 +1274,7 @@ bash /tmp/INSTALL.sh -c
 </div>
 <h3 id="-1-installer-and-manual-install-instructions_1">-1/ Installer and Manual install instructions<a class="headerlink" href="#-1-installer-and-manual-install-instructions_1" title="Permanent link">&para;</a></h3>
 <p>Make sure you are reading the parsed version of this Document. When in doubt <a href="https://misp.github.io/MISP/INSTALL.ubuntu2004/">click here</a>.</p>
-<h3 id="0-misp-ubuntu-2004-server-install-status">0/ MISP Ubuntu 20.04-server install - status<a class="headerlink" href="#0-misp-ubuntu-2004-server-install-status" title="Permanent link">&para;</a></h3>
+<h3 id="0-misp-ubuntu-2204-server-install-status">0/ MISP Ubuntu 22.04-server install - status<a class="headerlink" href="#0-misp-ubuntu-2204-server-install-status" title="Permanent link">&para;</a></h3>
 <hr />
 <div class="admonition notice">
 <p class="admonition-title">Notice</p>
@@ -1291,7 +1291,7 @@ Enjoy installing MISP. For any issues see <a href="https://github.com/MISP/MISP/
 </div>
 <h3 id="1-minimal-ubuntu-install">1/ Minimal Ubuntu install<a class="headerlink" href="#1-minimal-ubuntu-install" title="Permanent link">&para;</a></h3>
 <hr />
-<h4 id="install-a-minimal-ubuntu-2004-server-system-with-the-software">Install a minimal Ubuntu 20.04-server system with the software:<a class="headerlink" href="#install-a-minimal-ubuntu-2004-server-system-with-the-software" title="Permanent link">&para;</a></h4>
+<h4 id="install-a-minimal-ubuntu-2204-server-system-with-the-software">Install a minimal Ubuntu 22.04-server system with the software:<a class="headerlink" href="#install-a-minimal-ubuntu-2204-server-system-with-the-software" title="Permanent link">&para;</a></h4>
 <ul>
 <li>OpenSSH server</li>
 <li>This guide assumes a user name of 'misp' with sudo working but can be overwritten by setting the environment variable: <em>${MISP_USER}</em></li>
@@ -1573,10 +1573,21 @@ installDepsPhp80 <span class="o">()</span> <span class="o">{</span>
   libapache2-mod-php7.4 <span class="se">\</span>
   php7.4 php7.4-cli <span class="se">\</span>
   php7.4-dev <span class="se">\</span>
-  php-json php7.4-xml php7.4-mysql php7.4-opcache php7.4-readline php7.4-mbstring php7.4-zip <span class="se">\</span>
-  php-redis php-gnupg <span class="se">\</span>
+  php7.4-json php7.4-xml php7.4-mysql php7.4-opcache php7.4-readline php7.4-mbstring php7.4-zip <span class="se">\</span>
   php7.4-intl php7.4-bcmath <span class="se">\</span>
   php7.4-gd
+  <span class="c1"># php-redis php-gnupg \</span>
+
+  <span class="c1"># Only needed while 7.4 downgrade</span>
+  sudo apt install libgpgme-dev
+  sudo pecl channel-update pecl.php.net
+  sudo pecl install redis
+  sudo pecl install gnupg
+
+  <span class="nb">echo</span> <span class="s2">&quot;extension=redis.so&quot;</span> <span class="p">|</span> sudo tee <span class="si">${</span><span class="nv">PHP_ETC_BASE</span><span class="si">}</span>/mods-available/redis.ini
+  sudo phpenmod redis
+  <span class="nb">echo</span> <span class="s2">&quot;extension=gnupg.so&quot;</span> <span class="p">|</span> sudo tee <span class="si">${</span><span class="nv">PHP_ETC_BASE</span><span class="si">}</span>/mods-available/gnupg.ini
+  sudo phpenmod gnupg
 
   <span class="k">for</span> key <span class="k">in</span> upload_max_filesize post_max_size max_execution_time max_input_time memory_limit
   <span class="k">do</span>
@@ -1613,6 +1624,8 @@ installCore <span class="o">()</span> <span class="o">{</span>
 
     <span class="c1"># install python-stix dependencies</span>
     <span class="si">${</span><span class="nv">SUDO_WWW</span><span class="si">}</span> <span class="si">${</span><span class="nv">PATH_TO_MISP</span><span class="si">}</span>/venv/bin/pip install ordered-set python-dateutil six weakrefmethod
+    debug <span class="s2">&quot;Install misp-stix&quot;</span>
+    <span class="si">${</span><span class="nv">SUDO_WWW</span><span class="si">}</span> <span class="si">${</span><span class="nv">PATH_TO_MISP</span><span class="si">}</span>/venv/bin/pip install <span class="si">${</span><span class="nv">PATH_TO_MISP</span><span class="si">}</span>/app/files/scripts/misp-stix
 
     debug <span class="s2">&quot;Install PyMISP&quot;</span>
     <span class="si">${</span><span class="nv">SUDO_WWW</span><span class="si">}</span> <span class="si">${</span><span class="nv">PATH_TO_MISP</span><span class="si">}</span>/venv/bin/pip install <span class="si">${</span><span class="nv">PATH_TO_MISP</span><span class="si">}</span>/PyMISP
