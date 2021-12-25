@@ -13,7 +13,7 @@
         <meta name="description" content="MISP Project - Install Guides">
       
       
-        <link rel="canonical" href="https://www.misp-project.org/generic/misp-modules-centos/">
+        <link rel="canonical" href="https://www.misp-project.org/generic/misp-modules-rhel/">
       
       
         <meta name="author" content="MISP Project">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Misp modules centos - MISP Install Documentation</title>
+        <title>Misp modules rhel - MISP Install Documentation</title>
       
     
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Misp modules centos
+                Misp modules rhel
               
             </span>
           
@@ -483,31 +483,31 @@
       
 
 
+  <li class="md-nav__item">
+    <a href="../../background-jobs-migration-guide/" title="Migrating BG Jobs" class="md-nav__link">
+      Migrating BG Jobs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
     
-    <label class="md-nav__link" for="nav-7">
+    <label class="md-nav__link" for="nav-8">
       Old guides
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+      <label class="md-nav__title" for="nav-8">
         Old guides
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../archive/old-2_3to2_4-UPGRADE/" title="2.3 to 2.4 upgrade" class="md-nav__link">
-      2.3 to 2.4 upgrade
-    </a>
-  </li>
-
         
           
           
@@ -527,32 +527,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../archive/INSTALL.ubuntu1604/" title="Ubuntu 16.04" class="md-nav__link">
-      Ubuntu 16.04
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../../archive/xINSTALL.debian9/" title="Debian 9" class="md-nav__link">
       Debian 9
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../archive/xINSTALL.centos6/" title="Centos 6" class="md-nav__link">
-      Centos 6
     </a>
   </li>
 
@@ -581,13 +557,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
-    <label class="md-nav__link" for="nav-8">
+    <label class="md-nav__link" for="nav-9">
       About
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
+      <label class="md-nav__title" for="nav-9">
         About
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -664,7 +640,7 @@
               
                 
                 
-                  <h1>Misp modules centos</h1>
+                  <h1>Misp modules rhel</h1>
                 
                 <h2 id="907-misp-modules">9.07/ misp-modules<a class="headerlink" href="#907-misp-modules" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># &lt;snippet-begin 3_misp-modules_RHEL.sh&gt;</span>
@@ -687,7 +663,7 @@ mispmodulesRHEL <span class="o">()</span> <span class="o">{</span>
   <span class="c1"># some misp-modules dependencies for RHEL&lt;8</span>
   <span class="o">([[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DISTRI</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;fedora33&quot;</span> <span class="o">]]</span> <span class="o">||</span> <span class="o">[[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DIST_VER</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span>~ ^<span class="o">[</span><span class="m">7</span><span class="o">]</span>.* <span class="o">]])</span> <span class="o">&amp;&amp;</span> sudo dnf install rubygem-rouge rubygem-asciidoctor zbar-devel opencv-devel -y
   <span class="c1"># some misp-modules dependencies for RHEL8</span>
-  <span class="o">[[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DIST_VER</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span>~ ^<span class="o">[</span><span class="m">8</span><span class="o">]</span>.* <span class="o">]]</span> <span class="o">&amp;&amp;</span> sudo dnf install https://packages.endpointdev.com/rhel/8/os/x86_64/endpoint-repo.x86_64.rpm -y <span class="o">&amp;&amp;</span> sudo dnf install zbar-devel opencv-devel -y
+  <span class="o">[[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DIST_VER</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">=</span>~ ^<span class="o">[</span><span class="m">8</span><span class="o">]</span>.* <span class="o">]]</span> <span class="o">&amp;&amp;</span> sudo dnf install https://packages.endpointdev.com/rhel/8/main/x86_64/endpoint-repo.noarch.rpm -y <span class="o">&amp;&amp;</span> sudo dnf install zbar-devel opencv-devel -y
 
   <span class="nb">echo</span> <span class="s2">&quot;[Unit]</span>
 <span class="s2">  Description=MISP modules</span>
@@ -736,7 +712,7 @@ mispmodulesRHEL <span class="o">()</span> <span class="o">{</span>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2021 MISP Project
+            Copyright &copy; 2022 MISP Project
           </div>
         
         powered by
