@@ -30,10 +30,10 @@
 #-------------------------------------------------------------------------------------------------|
 #
 # The following installs only MISP Core:
-# $ wget --no-cache -O /tmp/INSTALL.sh https://raw.githubusercontent.com/MISP/MISP/2.4/INSTALL/INSTALL.sh ; bash /tmp/INSTALL.sh -c
+# $ wget --no-cache -O /tmp/INSTALL.sh https://raw.githubusercontent.com/thetawatcher/MISP/v2.4.157/INSTALL/INSTALL.sh ; bash /tmp/INSTALL.sh -c
 #
 # This will install MISP Core and misp-modules
-# $ wget --no-cache -O /tmp/INSTALL.sh https://raw.githubusercontent.com/MISP/MISP/2.4/INSTALL/INSTALL.sh ; bash /tmp/INSTALL.sh -c -M
+# $ wget --no-cache -O /tmp/INSTALL.sh https://raw.githubusercontent.com/thetawatcher/MISP/v2.4.157/INSTALL/INSTALL.sh ; bash /tmp/INSTALL.sh -c -M
 #
 #
 #-------------------------------------------------------|
@@ -41,7 +41,7 @@
 #-------------------------------------------------------|
 #
 # To install MISP on Kali copy paste the following to your shell:
-# # wget --no-cache -O /tmp/misp-kali.sh https://raw.githubusercontent.com/MISP/MISP/2.4/INSTALL/INSTALL.sh && bash /tmp/misp-kali.sh
+# # wget --no-cache -O /tmp/misp-kali.sh https://raw.githubusercontent.com/thetawatcher/MISP/v2.4.157/INSTALL/INSTALL.sh && bash /tmp/misp-kali.sh
 # NO other version then 2022.x supported, kthxbai.
 # /!\ Please read the installer script before randomly doing the above.
 # The script is tested on a plain vanilla Kali Linux Boot CD and installs quite a few dependencies.
@@ -413,7 +413,7 @@ checkInstaller () {
   # Workaround: shasum is not available on RHEL, only checking sha512
   if [[ "${FLAVOUR}" == "rhel" ]] || [[ "${FLAVOUR}" == "centos" ]] || [[ "${FLAVOUR}" == "fedora" ]]; then
   INSTsum=$(sha512sum ${0} | cut -f1 -d\ )
-  /usr/bin/wget --no-cache -q -O /tmp/INSTALL.sh.sha512 https://raw.githubusercontent.com/MISP/MISP/2.4/INSTALL/INSTALL.sh.sha512
+  /usr/bin/wget --no-cache -q -O /tmp/INSTALL.sh.sha512 https://raw.githubusercontent.com/thetawatcher/MISP/v2.4.157/INSTALL/INSTALL.sh.sha512
         chsum=$(cat /tmp/INSTALL.sh.sha512)
   if [[ "${chsum}" == "${INSTsum}" ]]; then
     echo "SHA512 matches"
@@ -430,7 +430,7 @@ checkInstaller () {
     # SHAsums to be computed, not the -- notatiation is for ease of use with rhash
     SHA_SUMS="--sha1 --sha256 --sha384 --sha512"
     for sum in $(echo ${SHA_SUMS} |sed 's/--sha//g'); do
-      /usr/bin/wget --no-cache -q -O /tmp/INSTALL.sh.sha${sum} https://raw.githubusercontent.com/MISP/MISP/2.4/INSTALL/INSTALL.sh.sha${sum}
+      /usr/bin/wget --no-cache -q -O /tmp/INSTALL.sh.sha${sum} https://raw.githubusercontent.com/thetawatcher/MISP/v2.4.157/INSTALL/INSTALL.sh.sha${sum}
       INSTsum=$(shasum -a ${sum} ${0} | cut -f1 -d\ )
       chsum=$(cat /tmp/INSTALL.sh.sha${sum} | cut -f1 -d\ )
 
@@ -2286,7 +2286,7 @@ installCoreRHEL7 () {
   sudo mkdir -p $(dirname $PATH_TO_MISP)
   sudo chown $WWW_USER:$WWW_USER $(dirname $PATH_TO_MISP)
   cd $(dirname $PATH_TO_MISP)
-  $SUDO_WWW git clone -b ${MISP_BRANCH} ${MISP_REPO}
+  $SUDO_WWW git clone https://github.com/MISP/MISP.git
   cd $PATH_TO_MISP
 
   # Fetch submodules

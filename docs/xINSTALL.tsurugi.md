@@ -59,7 +59,7 @@ wget --no-cache -O /tmp/misp-tsurugi.sh https://raw.githubusercontent.com/MISP/M
 # sudo sed -i 's/ja_JP.UTF/# ja_JP.UTF/g' /etc/locale.gen
 # sudo dpkg-reconfigure locales
 # To install MISP on Tsurugi copy paste this in your r00t shell:
-# wget -O /tmp/misp-tsurugi.sh https://raw.githubusercontent.com/MISP/MISP/2.4/INSTALL/INSTALL.tsurugi.txt && bash /tmp/misp-tsurugi.sh
+# wget -O /tmp/misp-tsurugi.sh https://raw.githubusercontent.com/thetawatcher/MISP/v2.4.157/INSTALL/INSTALL.tsurugi.txt && bash /tmp/misp-tsurugi.sh
 # /!\ Please read the installer script before randomly doing the above.
 # The script is tested on a plain vanilla Tsurugi Linux Boot CD and installs quite a few dependencies.
 

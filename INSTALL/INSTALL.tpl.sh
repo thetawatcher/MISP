@@ -30,10 +30,10 @@
 #-------------------------------------------------------------------------------------------------|
 #
 # The following installs only MISP Core:
-# $ wget --no-cache -O /tmp/INSTALL.sh https://raw.githubusercontent.com/MISP/MISP/2.4/INSTALL/INSTALL.sh ; bash /tmp/INSTALL.sh -c
+# $ wget --no-cache -O /tmp/INSTALL.sh https://raw.githubusercontent.com/thetawatcher/MISP/v2.4.157/INSTALL/INSTALL.sh ; bash /tmp/INSTALL.sh -c
 #
 # This will install MISP Core and misp-modules
-# $ wget --no-cache -O /tmp/INSTALL.sh https://raw.githubusercontent.com/MISP/MISP/2.4/INSTALL/INSTALL.sh ; bash /tmp/INSTALL.sh -c -M
+# $ wget --no-cache -O /tmp/INSTALL.sh https://raw.githubusercontent.com/thetawatcher/MISP/v2.4.157/INSTALL/INSTALL.sh ; bash /tmp/INSTALL.sh -c -M
 #
 #
 #-------------------------------------------------------|
@@ -41,7 +41,7 @@
 #-------------------------------------------------------|
 #
 # To install MISP on Kali copy paste the following to your shell:
-# # wget --no-cache -O /tmp/misp-kali.sh https://raw.githubusercontent.com/MISP/MISP/2.4/INSTALL/INSTALL.sh && bash /tmp/misp-kali.sh
+# # wget --no-cache -O /tmp/misp-kali.sh https://raw.githubusercontent.com/thetawatcher/MISP/v2.4.157/INSTALL/INSTALL.sh && bash /tmp/misp-kali.sh
 # NO other version then 2022.x supported, kthxbai.
 # /!\ Please read the installer script before randomly doing the above.
 # The script is tested on a plain vanilla Kali Linux Boot CD and installs quite a few dependencies.
