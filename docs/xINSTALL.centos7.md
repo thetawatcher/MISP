@@ -121,7 +121,7 @@ PATH_TO_MISP="/var/www/MISP"
 sudo mkdir -p $(dirname ${PATH_TO_MISP})
 sudo chown ${WWW_USER}:${WWW_USER} ($dirname ${PATH_TO_MISP})
 cd $(dirname ${PATH_TO_MISP})
-${SUDO_WWW} git clone https://github.com/MISP/MISP.git
+${SUDO_WWW} git clone -b ${MISP_BRANCH} ${MISP_REPO}
 cd ${PATH_TO_MISP}
 ##${SUDO_WWW} git checkout tags/$(git describe --tags `git rev-list --tags --max-count=1`)
 # if the last shortcut doesn't work, specify the latest version manually
@@ -577,7 +577,7 @@ sudo yum install openjpeg-devel -y
 sudo chmod 2777 /usr/local/src
 sudo chown root:users /usr/local/src
 cd /usr/local/src/
-${SUDO_WWW} git clone https://github.com/MISP/misp-modules.git
+${SUDO_WWW} git clone -b ${MISP_MODULES_BRANCH} ${MISP_MODULES_REPO}
 cd misp-modules
 $SUDO_WWW git config core.filemode false
 # pip install

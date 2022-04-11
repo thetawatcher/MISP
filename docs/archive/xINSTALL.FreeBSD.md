@@ -208,7 +208,7 @@ sudo service apache24 restart
 sudo mkdir ${PATH_TO_MISP}
 sudo chown www:www ${PATH_TO_MISP}
 cd ${PATH_TO_MISP}
-sudo -u www git clone https://github.com/MISP/MISP.git ${PATH_TO_MISP}
+sudo -u www git clone -b ${MISP_BRANCH} ${MISP_REPO} ${PATH_TO_MISP}
 
 # Make git ignore filesystem permission differences
 sudo -u www git config core.filemode false
@@ -449,7 +449,7 @@ sudo mkdir /usr/local/src
 sudo chmod 2775 /usr/local/src
 sudo chown root:staff /usr/local/src
 cd /usr/local/src/
-git clone https://github.com/MISP/misp-modules.git
+git clone -b ${MISP_MODULES_BRANCH} ${MISP_MODULES_REPO}
 cd misp-modules
 # lief broken...
 sudo -H -u www ${PATH_TO_MISP}/venv/bin/pip install maec python-magic

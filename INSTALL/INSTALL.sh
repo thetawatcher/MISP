@@ -54,7 +54,7 @@
 # To generate this script yourself, the following steps need to be taken.
 # $ git clone https://github.com/SteveClement/xsnippet.git
 # Make sure xsnippet resides somewhere in your $PATH - It is a shell script so a simple, copy to somewhere sane is enough.
-# $ git clone https://github.com/MISP/MISP.git
+# $ git clone -b ${MISP_BRANCH} ${MISP_REPO}
 # $ cd MISP/INSTALL ; ./INSTALL.tpl.sh
 #
 ##
@@ -1336,7 +1336,7 @@ installCore () {
   if [[ ! -d ${PATH_TO_MISP} ]]; then
     sudo mkdir ${PATH_TO_MISP}
     sudo chown ${WWW_USER}:${WWW_USER} ${PATH_TO_MISP}
-    false; while [[ $? -ne 0 ]]; do checkAptLock; ${SUDO_WWW} git clone https://github.com/MISP/MISP.git ${PATH_TO_MISP}; done
+    false; while [[ $? -ne 0 ]]; do checkAptLock; ${SUDO_WWW} git clone -b ${MISP_BRANCH} ${MISP_REPO} ${PATH_TO_MISP}; done
     false; while [[ $? -ne 0 ]]; do checkAptLock; ${SUDO_WWW} git -C ${PATH_TO_MISP} submodule update --progress --init --recursive; done
     # Make git ignore filesystem permission differences for submodules
     ${SUDO_WWW} git -C ${PATH_TO_MISP} submodule foreach --recursive git config core.filemode false
@@ -1823,7 +1823,7 @@ mispmodules () {
   ## TODO: checkUsrLocalSrc in main doc
   if [[ ! -d /usr/local/src/misp-modules ]]; then
     debug "Cloning misp-modules"
-    false; while [[ $? -ne 0 ]]; do $SUDO_CMD git clone https://github.com/MISP/misp-modules.git; done
+    false; while [[ $? -ne 0 ]]; do $SUDO_CMD git clone -b ${MISP_MODULES_BRANCH} ${MISP_MODULES_REPO}; done
   else
     false; while [[ $? -ne 0 ]]; do $SUDO_CMD git -C /usr/local/src/misp-modules pull; done
   fi
@@ -2286,7 +2286,7 @@ installCoreRHEL7 () {
   sudo mkdir -p $(dirname $PATH_TO_MISP)
   sudo chown $WWW_USER:$WWW_USER $(dirname $PATH_TO_MISP)
   cd $(dirname $PATH_TO_MISP)
-  $SUDO_WWW git clone https://github.com/MISP/MISP.git
+  $SUDO_WWW git clone -b ${MISP_BRANCH} ${MISP_REPO}
   cd $PATH_TO_MISP
 
   # Fetch submodules
@@ -2400,7 +2400,7 @@ installCoreRHEL8 () {
   sudo mkdir -p $(dirname $PATH_TO_MISP)
   sudo chown $WWW_USER:$WWW_USER $(dirname $PATH_TO_MISP)
   cd $(dirname $PATH_TO_MISP)
-  $SUDO_WWW git clone https://github.com/MISP/MISP.git
+  $SUDO_WWW git clone -b ${MISP_BRANCH} ${MISP_REPO}
   cd $PATH_TO_MISP
 
   # Fetch submodules
@@ -2831,7 +2831,7 @@ mispmodulesRHEL () {
   sudo chmod 2777 /usr/local/src
   sudo chown root:users /usr/local/src
   cd /usr/local/src/
-  false; while [[ $? -ne 0 ]]; do ${SUDO_WWW} git clone https://github.com/MISP/misp-modules.git; done
+  false; while [[ $? -ne 0 ]]; do ${SUDO_WWW} git clone -b ${MISP_MODULES_BRANCH} ${MISP_MODULES_REPO}; done
   cd misp-modules
   # pip install
   ${SUDO_WWW} ${PATH_TO_MISP}/venv/bin/pip install -U -I -r REQUIREMENTS
@@ -3203,7 +3203,7 @@ installMISPonKali () {
   sudo mkdir ${PATH_TO_MISP}
   sudo chown ${WWW_USER}:${WWW_USER} ${PATH_TO_MISP}
   cd ${PATH_TO_MISP}
-  false; while [[ $? -ne 0 ]]; do ${SUDO_WWW} git clone https://github.com/MISP/MISP.git ${PATH_TO_MISP}; done
+  false; while [[ $? -ne 0 ]]; do ${SUDO_WWW} git clone -b ${MISP_BRANCH} ${MISP_REPO} ${PATH_TO_MISP}; done
 
   ${SUDO_WWW} git config core.filemode false
 

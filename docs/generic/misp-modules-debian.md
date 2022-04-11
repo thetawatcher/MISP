@@ -9,7 +9,7 @@ mispmodules () {
   ## TODO: checkUsrLocalSrc in main doc
   if [[ ! -d /usr/local/src/misp-modules ]]; then
     debug "Cloning misp-modules"
-    false; while [[ $? -ne 0 ]]; do $SUDO_CMD git clone https://github.com/MISP/misp-modules.git; done
+    false; while [[ $? -ne 0 ]]; do $SUDO_CMD git clone -b ${MISP_MODULES_BRANCH} ${MISP_MODULES_REPO}; done
   else
     false; while [[ $? -ne 0 ]]; do $SUDO_CMD git -C /usr/local/src/misp-modules pull; done
   fi

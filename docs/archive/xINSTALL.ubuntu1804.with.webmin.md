@@ -157,7 +157,7 @@ Download MISP using git in the /home/${VIRT_USER}/public_html/ as ${VIRT_USER}
 sudo su - ${VIRT_USER}
 # or log out root and log back in as your virtual server user
 
-git clone https://github.com/MISP/MISP.git ${PATH_TO_MISP}
+git clone -b ${MISP_BRANCH} ${MISP_REPO} ${PATH_TO_MISP}
 cd ${PATH_TO_MISP}
 git checkout tags/$(git describe --tags `git rev-list --tags --max-count=1`)
 # if the last shortcut doesn't work, specify the latest version manually

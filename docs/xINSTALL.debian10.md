@@ -125,7 +125,7 @@ sudo systemctl restart apache2
 sudo mkdir ${PATH_TO_MISP}
 sudo chown ${WWW_USER}:${WWW_USER} ${PATH_TO_MISP}
 cd ${PATH_TO_MISP}
-${SUDO_WWW} git clone https://github.com/MISP/MISP.git ${PATH_TO_MISP}
+${SUDO_WWW} git clone -b ${MISP_BRANCH} ${MISP_REPO} ${PATH_TO_MISP}
 ${SUDO_WWW} git submodule update --init --recursive
 # Make git ignore filesystem permission differences for submodules
 ${SUDO_WWW} git submodule foreach --recursive git config core.filemode false

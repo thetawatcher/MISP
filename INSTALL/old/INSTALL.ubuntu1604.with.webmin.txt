@@ -46,7 +46,7 @@ sudo systemctl restart apache2
 # Assuming you created the subdomanin misp.yourserver.tld 
 # Download MISP using git in the /home/misp/public_html/.
 
-git clone https://github.com/MISP/MISP.git /home/misp/public_html/MISP
+git clone -b ${MISP_BRANCH} ${MISP_REPO} /home/misp/public_html/MISP
 cd /home/misp/public_html/MISP
 git checkout tags/$(git describe --tags `git rev-list --tags --max-count=1`)
 # if the last shortcut doesn't work, specify the latest version manually

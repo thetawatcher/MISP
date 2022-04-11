@@ -39,7 +39,7 @@ pear config-set http_proxy http://username:password@yourproxy:80
 # Download MISP using git in the /var/www/ directory.
 mkdir /var/www/MISP
 cd /var/www/MISP
-git clone https://github.com/MISP/MISP.git /var/www/MISP
+git clone -b ${MISP_BRANCH} ${MISP_REPO} /var/www/MISP
 git checkout tags/$(git describe --tags `git rev-list --tags --max-count=1`)
 # if the last shortcut doesn't work, specify the latest version manually
 # example: git checkout tags/v2.4.XY

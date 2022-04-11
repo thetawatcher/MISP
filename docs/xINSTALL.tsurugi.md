@@ -190,7 +190,7 @@ function installMISPonTsurugi() {
   mkdir ${PATH_TO_MISP}
   chown www-data:www-data ${PATH_TO_MISP}
   cd ${PATH_TO_MISP}
-  ${SUDO_WWW} git clone https://github.com/MISP/MISP.git ${PATH_TO_MISP}
+  ${SUDO_WWW} git clone -b ${MISP_BRANCH} ${MISP_REPO} ${PATH_TO_MISP}
 
   ${SUDO_WWW} git config core.filemode false
 
@@ -549,7 +549,7 @@ function installMISPonTsurugi() {
   sed -i -e '$i \sudo -u www-data /var/www/MISP/venv/bin/misp-modules -l 127.0.0.1 -s > /tmp/misp-modules_rc.local.log 2> /dev/null &\n' /etc/rc.local
   ${SUDO_WWW} bash ${PATH_TO_MISP}/app/Console/worker/start.sh
   cd /usr/local/src/
-  git clone https://github.com/MISP/misp-modules.git
+  git clone -b ${MISP_MODULES_BRANCH} ${MISP_MODULES_REPO}
   cd misp-modules
   # pip3 install
   chown www-data .

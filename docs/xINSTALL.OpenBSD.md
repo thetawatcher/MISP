@@ -324,7 +324,7 @@ doas mysql_secure_installation
 doas mkdir /var/www/htdocs/MISP
 doas chown www:www /var/www/htdocs/MISP
 cd /var/www/htdocs/MISP
-false; while [[ $? -ne 0 ]]; do ${SUDO_WWW} git clone https://github.com/MISP/MISP.git /var/www/htdocs/MISP; done
+false; while [[ $? -ne 0 ]]; do ${SUDO_WWW} git clone -b ${MISP_BRANCH} ${MISP_REPO} /var/www/htdocs/MISP; done
 false; while [[ $? -ne 0 ]]; do ${SUDO_WWW} git submodule update --progress --init --recursive; done
 # Make git ignore filesystem permission differences for submodules
 ${SUDO_WWW} git submodule foreach --recursive git config core.filemode false
@@ -604,7 +604,7 @@ doas pkg_add -v jpeg yara
 mkdir -p /usr/local/src/
 cd /usr/local/src/
 doas chown ${MISP_USER} /usr/local/src
-doas -u misp git clone https://github.com/MISP/misp-modules.git
+doas -u misp git clone -b ${MISP_MODULES_BRANCH} ${MISP_MODULES_REPO}
 cd misp-modules
 $SUDO_WWW git config core.filemode false
 # pip3 install

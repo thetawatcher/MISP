@@ -54,7 +54,7 @@
 # To generate this script yourself, the following steps need to be taken.
 # $ git clone https://github.com/SteveClement/xsnippet.git
 # Make sure xsnippet resides somewhere in your $PATH - It is a shell script so a simple, copy to somewhere sane is enough.
-# $ git clone https://github.com/MISP/MISP.git
+# $ git clone -b ${MISP_BRANCH} ${MISP_REPO}
 # $ cd MISP/INSTALL ; ./INSTALL.tpl.sh
 #
 ##
@@ -459,7 +459,7 @@ installMISPonKali () {
   sudo mkdir ${PATH_TO_MISP}
   sudo chown ${WWW_USER}:${WWW_USER} ${PATH_TO_MISP}
   cd ${PATH_TO_MISP}
-  false; while [[ $? -ne 0 ]]; do ${SUDO_WWW} git clone https://github.com/MISP/MISP.git ${PATH_TO_MISP}; done
+  false; while [[ $? -ne 0 ]]; do ${SUDO_WWW} git clone -b ${MISP_BRANCH} ${MISP_REPO} ${PATH_TO_MISP}; done
 
   ${SUDO_WWW} git config core.filemode false
 

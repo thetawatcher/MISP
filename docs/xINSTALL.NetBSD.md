@@ -186,7 +186,7 @@ PATH_TO_MISP=/usr/pkg/share/httpd/htdocs/MISP
 sudo mkdir $PATH_TO_MISP
 sudo chown www:www $PATH_TO_MISP
 cd $PATH_TO_MISP
-sudo -u www git clone https://github.com/MISP/MISP.git $PATH_TO_MISP
+sudo -u www git clone -b ${MISP_BRANCH} ${MISP_REPO} $PATH_TO_MISP
 sudo -u www git submodule update --progress --init --recursive
 # Make git ignore filesystem permission differences for submodules
 sudo -u www git submodule foreach --recursive git config core.filemode false
@@ -465,7 +465,7 @@ sudo -u www bash $PATH_TO_MISP/app/Console/worker/start.sh
 #/usr/pkgsrc/graphics/opencv2/ (needs X11)
 sudo pkgin -y install jpeg yara
 cd /usr/local/src/
-git clone https://github.com/MISP/misp-modules.git
+git clone -b ${MISP_MODULES_BRANCH} ${MISP_MODULES_REPO}
 cd misp-modules
 # pip3 install
 sudo $PATH_TO_MISP/venv/bin/pip install -I -r REQUIREMENTS

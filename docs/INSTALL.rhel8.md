@@ -250,7 +250,7 @@ installCoreRHEL8 () {
   sudo mkdir -p $(dirname $PATH_TO_MISP)
   sudo chown $WWW_USER:$WWW_USER $(dirname $PATH_TO_MISP)
   cd $(dirname $PATH_TO_MISP)
-  $SUDO_WWW git clone https://github.com/MISP/MISP.git
+  $SUDO_WWW git clone -b ${MISP_BRANCH} ${MISP_REPO}
   cd $PATH_TO_MISP
 
   # Fetch submodules

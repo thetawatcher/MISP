@@ -4,7 +4,7 @@
 # For example, if you want the fetcher to work in /foo/bar/baz, use "/foo/bar/baz/MISPflat"
 MISP_FLAT_ROOT="MISPflat"
 
-git clone https://github.com/MISP/MISP.git $MISP_FLAT_ROOT
+git clone -b ${MISP_BRANCH} ${MISP_REPO} $MISP_FLAT_ROOT
 cd $MISP_FLAT_ROOT
 git submodule update --init --recursive
 cd ..

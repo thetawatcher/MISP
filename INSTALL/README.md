@@ -61,7 +61,7 @@ Now you are ready.
 To test if you are really ready, do the following:
 
 ```
-git clone https://github.com/MISP/MISP.git
+git clone -b ${MISP_BRANCH} ${MISP_REPO}
 cd MISP/INSTALL ; ./INSTALL.tpl.sh
 ```
 
